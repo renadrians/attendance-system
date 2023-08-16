@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clock In/Out</title>
+    <!-- Tambahkan link CSS Bootstrap versi 5 di bawah ini -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Clock In/Out</h1>
+        <p style="font-size: 24px; font-weight: 400;">{{ greeting }}</p>
+        <div class="form-container">
+            <form action="/clock-in-out" method="POST">
+                <div class="mb-3">
+                    <label for="clock_type" class="form-label">Clock Type:</label>
+                    <select name="clock_type" class="form-select">
+                        <option value="in">Clock In</option>
+                        <option value="out">Clock Out</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary"><i class="bi bi-check-circle"></i> Submit</button>
+            </form>
+        </div>
+        <h2 class="mt-4">Recent Clocks:</h2>
+        <ul class="list-group">
+            {% for clock in clocks %}
+                <li class="list-group-item">{{ clock.timestamp.strftime('%Y-%m-%d %H:%M:%S') }} - {{ clock.clock_type }}</li>
+            {% endfor %}
+        </ul>
+        <br>
+        <p><a href="{{ url_for('staff_dashboard') }}" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Back to Dashboard</a></p>
+    </div>
+
+    <!-- Tambahkan script Bootstrap JS versi 5 di bawah ini (sebaiknya letakkan sebelum </body>) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Tambahkan link ke Bootstrap Icons CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</body>
+</html>

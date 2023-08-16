@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Staff</title>
+    <!-- Tambahkan link CSS Bootstrap 5 di bawah ini -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Edit Staff</h1>
+        <p class="text-center">Welcome, {{ admin.username }}!</p>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Staff ID</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for staff in staffs %}
+                    <tr>
+                        <td>{{ staff.id }}</td>
+                        <td>
+                            <form method="POST">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="new_username" value="{{ staff.username }}" required>
+                                </div>
+                        </td>
+                        <td>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" name="new_password">
+                                </div>
+                        </td>
+                        <td>
+                                <input type="hidden" name="staff_id" value="{{ staff.id }}">
+                                <button type="submit" class="btn btn-primary me-2"><i class="bi bi-check"></i> Save</button>
+                            </form>
+                            <a href="{{ url_for('delete_staff', staff_id=staff.id) }}" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <p><a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Back to Admin Dashboard</a></p>
+        <p><a href="{{ url_for('admin_login') }}" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Logout</a></p>
+    </div>
+
+    <!-- Tambahkan script Bootstrap JS di bawah ini (sebaiknya letakkan sebelum </body>) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Tambahkan link ke Bootstrap Icons CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Staff</title>
+    <!-- Tambahkan link CSS Bootstrap di bawah ini -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">ADD STAFF</h1>
+        <p style="font-size: 30px; font-weight: 400;" class="text-center">Welcome, {{ admin.username }}!</p>
+        <form method="POST">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus-fill"></i> Add Staff</button>
+        </form>
+        <br>
+        <p><a href="{{ url_for('edit_staff') }}">Back to Edit Staff</a></p>
+        <p><a href="{{ url_for('admin_login') }}">Logout</a></p>
+    </div>
+
+    <!-- Tambahkan script Bootstrap JS di bawah ini (sebaiknya letakkan sebelum </body>) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
